@@ -1,0 +1,280 @@
+{
+  "name": "email-automation.json",
+  "nodes": [
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            }
+          ]
+        },
+        "simple": false,
+        "filters": {},
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmailTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        0,
+        0
+      ],
+      "id": "2d2f2b60-2154-409f-9d78-af2a2197a9ad",
+      "name": "Gmail Trigger",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "hKfQm3USOshaKUuU",
+          "name": "Gmail account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "05325878-07fd-44c3-8233-ff437b8824e7",
+              "leftValue": "={{ $json.headers.from }}",
+              "rightValue": "softcompany.com",
+              "operator": {
+                "type": "string",
+                "operation": "notContains"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        208,
+        0
+      ],
+      "id": "c29a3a20-3fcb-4a65-8b39-77a05264088e",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $('Gmail Trigger').item.json.text }}",
+        "options": {
+          "systemMessage": "Você é um agente comercial especializado em soluções de software e tecnologia.\nSeu objetivo é responder e-mails de potenciais clientes que entram em contato demonstrando interesse nos serviços da empresa, tirando dúvidas, qualificando o lead e conduzindo para o próximo passo comercial.\n\nA empresa é uma empresa de SOFTWARE e TECNOLOGIA voltada para soluções digitais para empresas (B2B).\nNão mencione nomes de empresas específicas.\nSempre utilize linguagem genérica e profissional.\n\n=====================================\n1. EM QUAIS SERVIÇOS A EMPRESA É ESPECIALIZADA?\n=====================================\n\nSomos uma empresa de software especializada em desenvolvimento de soluções digitais para empresas, incluindo:\n\n<ul>\n<li>Desenvolvimento de sistemas web e aplicações empresariais</li>\n<li>Automação de processos e fluxos internos</li>\n<li>Integrações entre sistemas e APIs</li>\n<li>Desenvolvimento de soluções com Inteligência Artificial</li>\n<li>Automação de e-mails e atendimento</li>\n<li>Criação de dashboards, sistemas internos e ferramentas sob medida</li>\n</ul>\n\nNosso foco é ajudar empresas a ganhar eficiência, reduzir custos operacionais e escalar seus processos com tecnologia.\n\nSempre finalize perguntando qual necessidade ou desafio o cliente está enfrentando.\n\n=====================================\n2. PARA QUEM AS SOLUÇÕES SÃO INDICADAS?\n=====================================\n\nNossas soluções são indicadas para:\n\n<ul>\n<li>Empresas que precisam automatizar processos repetitivos</li>\n<li>Negócios que recebem muitos contatos por e-mail ou formulários</li>\n<li>Empresas que desejam integrar sistemas diferentes</li>\n<li>Equipes que precisam de sistemas personalizados</li>\n<li>Negócios que querem aplicar Inteligência Artificial no dia a dia</li>\n</ul>\n\nPergunte qual é o porte da empresa e o objetivo principal do projeto.\n\n=====================================\n3. COMO SABER SE A EMPRESA É CONFIÁVEL?\n=====================================\n\nReforce sempre que:\n\n<ul>\n<li>Trabalhamos com desenvolvimento profissional e boas práticas de mercado</li>\n<li>As soluções são personalizadas conforme a necessidade de cada cliente</li>\n<li>Prezamos por comunicação clara, segurança e suporte</li>\n<li>Atuamos com foco em resultado real para o negócio</li>\n</ul>\n\nExplique que cada projeto passa por análise antes de qualquer proposta.\n\n=====================================\n4. COMO FUNCIONA O PROCESSO DE CONTRATAÇÃO?\n=====================================\n\nExplique de forma simples:\n\n<ul>\n<li>Entendimento da necessidade do cliente</li>\n<li>Análise técnica da solução ideal</li>\n<li>Apresentação da proposta</li>\n<li>Desenvolvimento e entrega</li>\n<li>Suporte e acompanhamento</li>\n</ul>\n\nConvide o cliente para avançar para uma conversa ou briefing inicial.\n\n=====================================\n5. AS SOLUÇÕES SÃO PERSONALIZADAS?\n=====================================\n\nSim. Todas as soluções são desenvolvidas de forma personalizada, de acordo com o cenário, objetivos e orçamento do cliente.\n\n=====================================\n6. FORMATO DE ATENDIMENTO\n=====================================\n\nAtendimento 100% online, via e-mail e reuniões remotas.\n\n=====================================\n7. LINK PARA AVANÇAR (OBRIGATÓRIO)\n=====================================\n\nSempre inclua um link genérico para avançar o contato, como:\n\nhttps://www.empresa-software.com/contato\n\nOu convide o cliente a responder o e-mail com mais detalhes.\n\n=====================================\n8. OBJETIVO DA RESPOSTA\n=====================================\n\nO objetivo principal de cada resposta é:\n- Tirar dúvidas iniciais\n- Qualificar o lead\n- Conduzir para o próximo passo comercial\n\nNunca force venda direta.\nSempre conduza a conversa.\n\n=====================================\n9. CONTEXTO DE E-MAIL (OBRIGATÓRIO)\n=====================================\n\nTodas as respostas devem ser escritas no formato de e-mail profissional, contendo:\n- Abertura educada\n- Corpo do e-mail claro e objetivo\n- CTA final convidando para próximo passo\n- Assinatura profissional genérica (ex: Equipe Comercial)\n\nSempre responda como se estivesse respondendo a um e-mail real.\nNunca responda como chat.\n\n=====================================\n10. TAMANHO E TOM DAS RESPOSTAS\n=====================================\n\n- Respostas curtas a médias\n- Tom profissional, humano e acessível\n- Não usar emojis\n- Não usar gírias\n- Não usar linguagem informal\n\n=====================================\n11. FORMATAÇÃO OBRIGATÓRIA\n=====================================\n\nNas respostas, sempre utilize HTML válido:\n- <br> para quebras de linha\n- <b> para negrito\n- <ul><li>...</li></ul> para listas"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        416,
+        -96
+      ],
+      "id": "0e464c9f-3a9e-4b14-a4b0-df6f17206822",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        400,
+        112
+      ],
+      "id": "10b7b01d-f9fa-4c49-a2c5-dc6e42448464",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "tdRgcAQ7UrBpt857",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $('Gmail Trigger').item.json.threadId }}",
+        "contextWindowLength": 25
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        528,
+        208
+      ],
+      "id": "e6aaa61b-f2f9-497c-9144-94eafbc5d4d5",
+      "name": "Simple Memory"
+    },
+    {
+      "parameters": {
+        "operation": "reply",
+        "messageId": "={{ $('Gmail Trigger').item.json.id }}",
+        "message": "={{ $json.output }}",
+        "options": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        768,
+        -96
+      ],
+      "id": "836fb443-9e9b-457b-9a20-92ea0f5fd7b6",
+      "name": "Reply to a message",
+      "webhookId": "004ca04a-7ac1-4499-b1cc-d450bfd79739",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "hKfQm3USOshaKUuU",
+          "name": "Gmail account 2"
+        }
+      }
+    }
+  ],
+  "pinData": {
+    "Gmail Trigger": [
+      {
+        "json": {
+          "id": "19c21094061b91f5",
+          "threadId": "19c21094061b91f5",
+          "labelIds": [
+            "UNREAD",
+            "CATEGORY_PERSONAL",
+            "INBOX"
+          ],
+          "sizeEstimate": 8626,
+          "headers": {
+            "delivered-to": "Delivered-To: pritschgabriel@gmail.com",
+            "received": "Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])\r\n        by mx.google.com with SMTPS id af79cd13be357-8c711b7b159sor1017672985a.3.2026.02.02.17.06.20\r\n        for <pritschgabriel@gmail.com>\r\n        (Google Transport Security);\r\n        Mon, 02 Feb 2026 17:06:20 -0800 (PST)",
+            "x-received": "X-Received: by 2002:a05:620a:28d6:b0:8b2:eea5:32f8 with SMTP id\r\n af79cd13be357-8c9eb26cd0amr1675401685a.34.1770080779996; Mon, 02 Feb 2026\r\n 17:06:19 -0800 (PST)",
+            "arc-seal": "ARC-Seal: i=1; a=rsa-sha256; t=1770080780; cv=none;\r\n        d=google.com; s=arc-20240605;\r\n        b=Q12cndvaRqY4Vz1TU61blY4FIl0lgWT+/EYdGQO7cTxPccBHUWxIumeBz9d82u7xEY\r\n         n1mwIK9YUfrTis2I1a86ehS0pysohkhbjlvempA1GUy+2lvvVsWo/maOGBLM4Lp/mA2U\r\n         Bw4UVPXa5VylhNUo2qhJiZw89RQBrc/ybUMQxKMj+2oX0oj9/NA4OPqd2FcL7+DZtPW+\r\n         XbNZUAvlLWakw3DdmDwFuIumnmp1+cU8vYSNQW9efmSUP2VJ+XOhtP17CvJ8N2ci8zZQ\r\n         lXNFZREO/aNErEp4LU38OxLrkzRsn0f4ODl0nhr5rVcdA5MrDOwNO7v4LUm0lmqw8UDY\r\n         QrRw==",
+            "arc-message-signature": "ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;\r\n        h=to:subject:message-id:date:from:mime-version:dkim-signature;\r\n        bh=d83yQ+17n/lSrFjPFGPl45DWVGqFlXX+NHL3FTgklfI=;\r\n        fh=gAPnFf4skJtLNLxQBAJk+YypeRdt+U9WEtOdnhNd7xg=;\r\n        b=VKdDP6Wb6OkyiFTIY4n/h9y/rqAZn7Fz0+36qXjWMfNRM70GMJqM955OlFLphLgGKb\r\n         tmEdSk7Znx+1/IXhoXnYuiz9bxBngdgpgJwKIQxLqd1FxxrXOvKzD4prQ59xnspXqGxQ\r\n         SOnKBJ0YJD33Vq1ASnBEjJRlz8CeOuX5q1S+ljW/wGV/yneFr3I4LinVNBMrrkWGOrB9\r\n         YtK/RN+EQkQEI1CGxFcNsVGw8RE34EKPUFRppN63zNKXPe39bZxKhBHSBxlmcZEtqQbv\r\n         bnXpQ+tN3AjV0fq8mtMnyvtskNaOI042GiP0ZiwULTMI6gs8OGHKjR7m4wTr0P27Idrx\r\n         oBXw==;\r\n        dara=google.com",
+            "arc-authentication-results": "ARC-Authentication-Results: i=1; mx.google.com; arc=none",
+            "return-path": "Return-Path: <ontemhojeamanha25@gmail.com>",
+            "received-spf": "Received-SPF: pass (google.com: domain of ontemhojeamanha25@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;",
+            "authentication-results": "Authentication-Results: mx.google.com;\r\n       dkim=pass header.i=@gmail.com header.s=20230601 header.b=Ula64Y0V;\r\n       arc=pass (i=1);\r\n       spf=pass (google.com: domain of ontemhojeamanha25@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=ontemhojeamanha25@gmail.com;\r\n       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;\r\n       dara=pass header.i=@gmail.com",
+            "dkim-signature": "DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;\r\n        d=gmail.com; s=20230601; t=1770080780; x=1770685580; dara=google.com;\r\n        h=to:subject:message-id:date:from:mime-version:from:to:cc:subject\r\n         :date:message-id:reply-to;\r\n        bh=d83yQ+17n/lSrFjPFGPl45DWVGqFlXX+NHL3FTgklfI=;\r\n        b=Ula64Y0V5R0JIuGpZ/b7DLGqdfXONVLBp1p6l8qEeu4HD00XKj17P2Wf6K+olMm+7b\r\n         +Q1fuE4AsQ2sq+kvXmyWq0/TOy1srMr/9ehOZzVW5Y8MOYMB4LkPIddv6cNPnv4zEM+n\r\n         AxQqa761bnjQm2ctom9IlRX+3ZZuyDb+0OiQ/MIBoNVUIU7QexeYosOvWyPMeHeTcWVr\r\n         73bnuRZWF5zkN+BstpqmSS2xk8Njtw4f8NY1aGS0eBd1anxPDmYKeBMNoW+dAuzIYrD0\r\n         wkKTjIfJ4Z6JRCgyT4nZSImCWuoPj7IE1I4m7ZOs3t0yYL1trWOMcyAfT8DtPUtbMNGe\r\n         Ck1Q==",
+            "x-google-dkim-signature": "X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;\r\n        d=1e100.net; s=20230601; t=1770080780; x=1770685580;\r\n        h=to:subject:message-id:date:from:mime-version:x-gm-gg\r\n         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;\r\n        bh=d83yQ+17n/lSrFjPFGPl45DWVGqFlXX+NHL3FTgklfI=;\r\n        b=Za27wo10k8Zq9MpjPRKGYg0vNMN2YCe0TkG3iFgshKYlTzUZknmvJY5z+Re7pbgY+E\r\n         3oN2IkAc1laLm5tY7xhpiTIuWpA+X7SDoKTWCLS5FAz3LrT4ZU6swXzizj3wx79sohea\r\n         5+Fo5fjmVdm8WT575l1JJPRvLY82cSWyZpAjBn4287u/88VVkL3mNVnj+1yp0jZBkejz\r\n         Dkk2kqS9QZLpEMXN2Myr15uSR9toyWJpZ4gWcSJ93NSpjfjl/xuxUNW6oulSDbg8olFB\r\n         hlTwHHWCyrEopumpxuWgJGZp/QFGf8iFdNw1Hsk1faq8ebF3zPvbDsYHEatcyvA5mgW4\r\n         /I2Q==",
+            "x-gm-message-state": "X-Gm-Message-State: AOJu0YxMhzKmCsNCTOOBDs+bj5RCeiUAAcS7+2qSDjvRkHiW1DRIUbbM\r\n\toptWtok+35XlkDWB34zQKwz/HSP919AtOiSgD2BFzrz7MjJ5fVl0vYlx+Z1mIvo9lhMuQ7IhaxO\r\n\tXWkBM82xWD/etp430NOH5ac2L8X2hjx5iMv6z",
+            "x-gm-gg": "X-Gm-Gg: AZuq6aIr1oohBCiNkhIVfEW8RFXAPOsjY5T8Mgzap8nRP7TcmcAa5fZXEKTnxf/88l5\r\n\tA4cymu4SUqHzIVeS2bd6+rz/Szr7FBBIbGzqSO0ZY27E717qKRSUnrMFmaQ+kxFfkhtRiaE/1iN\r\n\tTqw8vGTlhnoh4my9TKKXgHrVckbsLU2ynC14M8dnLpxabrZLTsJIfqkc6SrBbiuEgipTPB6H9y+\r\n\t16pUYgrOUNtJEiUbciJvA+H3kW3XHFhmBRtw/Pe8NegZSvYtdpeCy2haApZvINIUvXSzSE=",
+            "mime-version": "MIME-Version: 1.0",
+            "from": "From: Gabriel <ontemhojeamanha25@gmail.com>",
+            "date": "Date: Mon, 2 Feb 2026 22:06:09 -0300",
+            "x-gm-features": "X-Gm-Features: AZwV_Qilre7HWOXwl5tmvLjpEVVICDJSBlJBvIGUfELRhlgGQkOjVH_tYzGNV6I",
+            "message-id": "Message-ID: <CANa9f4-06GPQ+3FOz-uA995DCMPW2tUS++_WD+HU5SBO20wivg@mail.gmail.com>",
+            "subject": "Subject: =?UTF-8?Q?D=C3=BAvida_sobre_automa=C3=A7=C3=A3o_de_processos?=",
+            "to": "To: \"pritschgabriel@gmail.com\" <pritschgabriel@gmail.com>",
+            "content-type": "Content-Type: multipart/alternative; boundary=\"0000000000001d905c0649e10c71\""
+          },
+          "html": "<div dir=\"ltr\"><p>Olá, bom dia!</p>\n<p>Encontrei o site de vocês pesquisando sobre empresas de tecnologia e gostaria de entender melhor como funciona o trabalho de vocês.</p>\n<p>Atualmente temos alguns processos internos que são feitos de forma manual, principalmente relacionados a atendimento por e-mail e organização de informações de clientes, e isso acaba tomando bastante tempo da equipe.</p>\n<p>Vocês trabalham com automação desses tipos de processos?<br>\nCaso sim, como funciona esse tipo de projeto e quais seriam os próximos passos para avaliar se é algo viável para a nossa empresa?</p>\n<p>Fico no aguardo, obrigado!</p>\n<p>Atenciosamente,<br>\n<strong>Lucas Andrade</strong><br>\nCoordenador Administrativo<br>\nEmpresa XYZ</p></div>\n",
+          "text": "Olá, bom dia!\n\nEncontrei o site de vocês pesquisando sobre empresas de tecnologia e\ngostaria de entender melhor como funciona o trabalho de vocês.\n\nAtualmente temos alguns processos internos que são feitos de forma manual,\nprincipalmente relacionados a atendimento por e-mail e organização de\ninformações de clientes, e isso acaba tomando bastante tempo da equipe.\n\nVocês trabalham com automação desses tipos de processos?\nCaso sim, como funciona esse tipo de projeto e quais seriam os próximos\npassos para avaliar se é algo viável para a nossa empresa?\n\nFico no aguardo, obrigado!\n\nAtenciosamente,\n*Lucas Andrade*\nCoordenador Administrativo\nEmpresa XYZ\n",
+          "textAsHtml": "<p>Ol&aacute;, bom dia!</p><p>Encontrei o site de voc&ecirc;s pesquisando sobre empresas de tecnologia e<br/>gostaria de entender melhor como funciona o trabalho de voc&ecirc;s.</p><p>Atualmente temos alguns processos internos que s&atilde;o feitos de forma manual,<br/>principalmente relacionados a atendimento por e-mail e organiza&ccedil;&atilde;o de<br/>informa&ccedil;&otilde;es de clientes, e isso acaba tomando bastante tempo da equipe.</p><p>Voc&ecirc;s trabalham com automa&ccedil;&atilde;o desses tipos de processos?<br/>Caso sim, como funciona esse tipo de projeto e quais seriam os pr&oacute;ximos<br/>passos para avaliar se &eacute; algo vi&aacute;vel para a nossa empresa?</p><p>Fico no aguardo, obrigado!</p><p>Atenciosamente,<br/>*Lucas Andrade*<br/>Coordenador Administrativo<br/>Empresa XYZ</p>",
+          "subject": "Dúvida sobre automação de processos",
+          "date": "2026-02-03T01:06:09.000Z",
+          "to": {
+            "value": [
+              {
+                "address": "pritschgabriel@gmail.com",
+                "name": ""
+              }
+            ],
+            "html": "<span class=\"mp_address_group\"><a href=\"mailto:pritschgabriel@gmail.com\" class=\"mp_address_email\">pritschgabriel@gmail.com</a></span>",
+            "text": "pritschgabriel@gmail.com"
+          },
+          "from": {
+            "value": [
+              {
+                "address": "ontemhojeamanha25@gmail.com",
+                "name": "Gabriel"
+              }
+            ],
+            "html": "<span class=\"mp_address_group\"><span class=\"mp_address_name\">Gabriel</span> &lt;<a href=\"mailto:ontemhojeamanha25@gmail.com\" class=\"mp_address_email\">ontemhojeamanha25@gmail.com</a>&gt;</span>",
+            "text": "\"Gabriel\" <ontemhojeamanha25@gmail.com>"
+          },
+          "messageId": "<CANa9f4-06GPQ+3FOz-uA995DCMPW2tUS++_WD+HU5SBO20wivg@mail.gmail.com>"
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ]
+  },
+  "connections": {
+    "Gmail Trigger": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Reply to a message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "b99c2182-1d00-4c18-b224-0d4d277ff505",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "44b197eb2b78485a10fc1c92dac966b0d2a47e0ad454eb186b050e788cad7fe6"
+  },
+  "id": "xsSrRAfsMdNgAdGOraLYb",
+  "tags": []
+}
