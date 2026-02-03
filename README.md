@@ -1,39 +1,35 @@
-# email-automation-n8n
-Automação de atendimento por e-mail para empresas usando n8n e IA, com classificação automática, respostas inteligentes e encaminhamento para atendimento humano.
+# 📧 Email Automation with n8n + AI
 
-📧 Email Automation with n8n + AI
+Automação completa de e-mails corporativos utilizando **n8n** integrado com **Inteligência Artificial**, focada em **classificação automática, respostas inteligentes e encaminhamento eficiente**.
 
-Este projeto demonstra uma automação completa de e-mails corporativos utilizando n8n integrado com Inteligência Artificial, focada em classificação automática, respostas inteligentes e encaminhamento eficiente.
+Este projeto demonstra como escalar o atendimento por e-mail em empresas de software e serviços digitais, reduzindo trabalho manual e tempo de resposta.
 
-O objetivo é reduzir trabalho manual, acelerar o atendimento e escalar processos de comunicação em empresas de software ou serviços digitais.
+---
 
-🚀 Funcionalidades
+## 🚀 Funcionalidades
 
-📥 Recebimento automático de e-mails
+- 📥 Recebimento automático de e-mails corporativos  
+- 🧠 Classificação inteligente das mensagens (orçamentos, dúvidas, suporte)  
+- ✉️ Respostas automáticas personalizadas com IA  
+- 👤 Encaminhamento para atendimento humano quando necessário  
+- ⚙️ Regras e fluxos configuráveis  
+- 🔄 Automação escalável e reutilizável  
 
-🧠 Classificação inteligente das mensagens (orçamento, dúvidas, suporte, etc.)
+---
 
-✉️ Respostas automáticas personalizadas com IA
+## 🛠️ Tecnologias Utilizadas
 
-👤 Encaminhamento para atendimento humano quando necessário
+- **n8n** – Orquestração e automação de workflows  
+- **Inteligência Artificial (LLM)** – Geração de respostas inteligentes  
+- **SMTP / IMAP** – Integração com e-mail corporativo  
+- **JSON** – Definição do fluxo de automação  
+- **Prompt Engineering** – Controle do comportamento da IA  
 
-⚙️ Fluxos configuráveis por regras e contexto
+---
 
-🔄 Automação 100% escalável
+## 📂 Estrutura do Projeto
 
-🛠️ Tecnologias Utilizadas
-
-n8n – Orquestração e automação de workflows
-
-Inteligência Artificial (LLM) – Geração e personalização de respostas
-
-SMTP / IMAP – Integração com e-mails corporativos
-
-JSON – Estruturação do workflow
-
-Prompt Engineering – Controle de comportamento da IA
-
-📂 Estrutura do Projeto
+```text
 email-automation-n8n/
 │
 ├── email-automation.json
@@ -44,59 +40,3 @@ email-automation-n8n/
 │      → Prompt do agente de IA (system message)
 │
 └── README.md
-
-🧠 Como Funciona o Fluxo
-
-O e-mail chega na caixa corporativa
-
-O n8n captura a mensagem automaticamente
-
-A IA analisa o conteúdo e classifica o tipo de solicitação
-
-Uma resposta automática é gerada com tom profissional
-
-Casos complexos são encaminhados para um atendente humano
-
-🧪 Caso de Uso Simulado
-
-Empresas que recebem 30 a 50 e-mails diários
-
-Demandas comuns:
-
-Orçamentos
-
-Dúvidas sobre serviços
-
-Suporte inicial
-
-Redução significativa do tempo de resposta
-
-Padronização da comunicação
-
-🔒 Observações Importantes
-
-Nenhum dado sensível ou e-mail real foi exposto
-
-O projeto é genérico, podendo ser adaptado para qualquer empresa
-
-Os textos e fluxos são exemplos técnicos
-
-📌 Diferencial Profissional
-
-Este projeto demonstra conhecimentos práticos em:
-
-Automação de processos reais
-
-Integração de IA com sistemas empresariais
-
-Lógica de negócios
-
-Estruturação de soluções escaláveis
-
-Ideal para ambientes corporativos e empresas de software.
-
-📬 Contato
-
-Caso queira conversar sobre automação, IA ou desenvolvimento de soluções:
-
-📧 Email: pritschgabriel@gmail.com
